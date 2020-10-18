@@ -1,0 +1,46 @@
+.logo {
+  font-family: "Oleo Script", cursive;
+  a {
+    font-size: 48px;
+  }
+}
+
+.container-Contact {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.contact p {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 1.25rem;
+}
+
+.contactFormGroup {
+  margin-bottom: 1rem;
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #000000;
+    padding: 1rem;
+    margin-top: 0.25rem;
+  }
+  input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.25rem;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: black;
+    opacity: 0.2;
+  }
+}
+
+@media (max-width: 414px) {
+  .contactFormGroup input,
+  .contactFormGroup textarea {
+    padding: 7px 12px;
+  }
+}
