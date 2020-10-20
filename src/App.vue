@@ -1,17 +1,18 @@
 <template>
   <div id="app">
+    <Toast/>
     <router-view/>
   </div>
 </template>
 
 <script>
 
-// import Toast from '@/components/frontend/Toasts.vue';
+import Toast from '@/components/frontend/Toasts.vue';
 
 export default {
   name: 'App',
   components: {
-    // Toast,
+    Toast,
   },
   data() {
     return {

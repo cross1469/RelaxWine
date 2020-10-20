@@ -2,7 +2,7 @@
   <div class="toasts-position">
     <div
       v-for="(item, i) in messages"
-      :id="`toast-${i}`"
+      :id="`toast-${ i }`"
       :key="i"
       class="toast fade show"
       role="alert"

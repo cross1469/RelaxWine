@@ -126,47 +126,123 @@
         <p class="text-center">
           我們相當重視您的意見，若您有任何疑問，請填妥以下資料，我們會在近期與您聯繫。
         </p>
-        <form class="contactForm">
-          <div class="contactFormGroup">
-            <label for="name">姓名</label>
-            <input type="text" id="name" name="name" placeholder="陳小明" />
+        <validation-observer v-slot="{ invalid }">
+          <form class="contactForm">
+            <!-- Name -->
+            <div class="form-group contactFormGroup">
+              <validation-provider rules="required" v-slot="{ errors, classes, passed }">
+                <label for="name" class="mb-2"><span class="text-danger">*</span>
+                姓名</label>
+                <input type="name" class="form-control rounded-0" id="name" name="姓名"
+                v-model.trim="form.name" :class="classes" placeholder="請輸入姓名">
+                <span v-if="errors[0]" class="invalid-feedback">{{ errors[0] }}</span>
+                <span v-if="passed" class="valid-feedback">姓名輸入正確</span>
+              </validation-provider>
+            </div>
+            <!-- Tel -->
+            <div class="form-group contactFormGroup">
+              <validation-provider rules="required|min:8"
+              v-slot="{ errors, classes, passed }">
+                <label for="tel" class="mb-2"> <span class="text-danger">*</span>
+                電話</label>
+                <input type="tel" class="form-control rounded-0" id="tel" name="電話"
+                v-model.trim="form.tel" :class="classes" placeholder="請輸入電話">
+                <span v-if="errors[0]" class="invalid-feedback">{{ errors[0] }}</span>
+                <span v-if="passed" class="valid-feedback">電話輸入正確</span>
+              </validation-provider>
+            </div>
+            <!-- Mail -->
+            <div class="form-group contactFormGroup">
+              <validation-provider rules="required|email"
+              v-slot="{ errors, classes, passed }">
+                <label for="email" class="mb-2"> <span class="text-danger">*</span>
+                電子郵件</label>
+                <input type="email" class="form-control" id="email" name="Email"
+                v-model.trim=" form.email" :class="classes" placeholder="請輸入 Email">
+                <span v-if="errors[0]" class="invalid-feedback">{{ errors[0] }}</span>
+                <span v-if="passed" class="valid-feedback">Email 輸入正確</span>
+              </validation-provider>
+            </div>
+            <!-- Message -->
+            <div class="form-group contactFormGroup">
+              <validation-provider rules="required" v-slot="{ errors, classes, passed }">
+                <label for="message" class="mb-2"><span class="text-danger">*</span>
+                意見反應</label>
+                <textarea class="form-control" id="message" name="意見反應" rows="10"
+                v-model.trim="form.message" :class="classes" placeholder="若對酒類商品有疑問，請留言告訴我們">
+                </textarea>
+                <span v-if="errors[0]" class="invalid-feedback">{{ errors[0] }}</span>
+                <span v-if="passed" class="valid-feedback">已輸入意見</span>
+              </validation-provider>
+            </div>
+            <!-- Checkbox -->
+            <div class="form-check contactFormGroup ">
+              <validation-provider :rules="{ required: { allowFalse: false } }"
+              v-slot="{ errors, classes, passed }">
+                <input type="checkbox" id="privacy" name="隱私權政策"
+                class="mb-2 form-check-input privacy" v-model.trim="form.privacy" :class="classes">
+                <label for="privacy">
+                  我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料
+                </label>
+                <span v-if="errors[0]" class="invalid-feedback">{{ errors[0] }}</span>
+                <span v-if="passed" class="valid-feedback">已勾選</span>
+              </validation-provider>
+            </div>
+            <!-- Submit -->
+            <div class="form-group row d-flex justify-content-center mt-5">
+              <div class="col-md-4 mt-3 mt-md-0">
+                <button type="button" :disabled="invalid"
+                @click="contactSubmit" class="btn btn-secondary btn-block d-flex align-items-center
+                justify-content-center">
+                確認送出
+                </button>
+              </div>
+            </div>
+          </form>
+        </validation-observer>
+      </div>
+      <!-- contact Modal -->
+      <div id="contactModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body bg-light text-center">
+              <div class="h5 text-info font-weight-bold">感謝您的聯繫</div>
+              <div class="h5 text-info font-weight-bold">我們將盡快與您聯絡！</div>
+            </div>
           </div>
-          <div class="contactFormGroup">
-            <label for="phone">聯絡電話</label>
-            <input type="tel" id="phone" name="phone" placeholder="0912-345-678" />
-          </div>
-          <div class="contactFormGroup">
-            <label for="mail">電子郵件</label>
-            <input type="email" id="mail" name="mail" placeholder="example@email.com" />
-          </div>
-          <div class="contactFormGroup">
-            <label for="issue">意見反應</label>
-            <textarea
-              id="issue"
-              name="issue"
-              rows="10"
-              placeholder="請輸入您的意見"
-            ></textarea>
-          </div>
-          <div class="contactFormGroup d-flex align-items-baseline">
-            <input type="checkbox" />
-            <p>
-              我同意隱私權政策，並同意依隱私權政策中所述的方式處理自己的資料。
-            </p>
-          </div>
-          <div class="d-flex justify-content-center">
-            <button class="btn btn-primary" type="submit">確認送出</button>
-          </div>
-        </form>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script>
+/* global $ */
+
 export default {
   data() {
-    return {};
+    return {
+      form: {
+        name: '',
+        tel: '',
+        email: '',
+        message: '',
+        privacy: false,
+      },
+    };
+  },
+  methods: {
+    contactSubmit() {
+      $('#contactModal').modal('show');
+      setTimeout(() => {
+        $('#contactModal').modal('hide');
+      }, 5000);
+    },
   },
 };
 </script>

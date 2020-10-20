@@ -94,7 +94,6 @@ export default {
         product: id,
         quantity,
       };
-      // console.log(cart);
       this.$http.post(url, cart)
         .then(() => {
           this.status.loadingItem = '';

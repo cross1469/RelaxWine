@@ -80,6 +80,7 @@
 </template>
 
 <script>
+/* global $ */
 export default {
   data() {
     return {
@@ -92,6 +93,16 @@ export default {
       this.getCart();
     });
   },
+  beforeDestroy() {
+    // 清除監聽事件
+    // 如果要指定哪個監聽對應方法，就需要傳入第二個參數(對應$on的設定)
+    this.$bus.$off('get-cart');
+  },
+  watch: {
+    $route() {
+      $('#navbarNav').collapse('hide');
+    },
+  },
   methods: {
     getCart() {
       this.isLoading = true;
@@ -102,6 +113,9 @@ export default {
         })
         .catch(() => {
         });
+    },
+    closeNavbar() {
+      $('#navbarNav').collapse('hide');
     },
   },
 };
