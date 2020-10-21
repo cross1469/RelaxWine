@@ -1,5 +1,5 @@
 # RelaxWine
-![index](https://www.dropbox.com/s/cv4irj02fps9cj4/cross1469.github.io_RelaxWine_.png?dl=0)
+![index](https://github.com/cross1469/Hexschool-JSPortfolio/blob/master/week8/cross1469.github.io_RelaxWine_.png)
 
 ## Demo
 https://cross1469.github.io/RelaxWine/
