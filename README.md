@@ -1,11 +1,10 @@
 # RelaxWine
+![index](https://www.dropbox.com/s/cv4irj02fps9cj4/cross1469.github.io_RelaxWine_.png?dl=0)
 
-### Demo
-```
+## Demo
 https://cross1469.github.io/RelaxWine/
-```
 
-### 使用技術
+## 使用技術
 * Vue CLI
 * Vue Router
 * Vue Components
@@ -18,7 +17,7 @@ https://cross1469.github.io/RelaxWine/
 * RWD
 * SCSS
 
-### 使用插件
+## 使用插件
 * [vue-router](https://www.npmjs.com/package/vue-router)
 * [vue-axios](https://www.npmjs.com/package/vue-axios)
 * [vue-loading-overlay](https://www.npmjs.com/package/vue-loading-overlay)
@@ -27,11 +26,8 @@ https://cross1469.github.io/RelaxWine/
 * [Google Fonts](https://fonts.google.com)
 * [Font Awesome](https://fontawesome.com)
 
-### 網頁架構
-```
+## 網頁架構
 以 Vue.js 實作模擬購物網站，功能區分為前、後台：
-
-```
 * 前台
   * 首頁 - 關於我們簡介、產品導覽
   * 產品列表 - 切換分類、加入購物車
@@ -44,6 +40,6 @@ https://cross1469.github.io/RelaxWine/
   * 優惠券管理 - 新增、刪除、編輯優惠券
   * 訂單管理 - 查看、修改訂單
 
-### 聲明
-* 圖片來源： Unsplash
+## 聲明
+* 圖片來源： [Unsplash](https://unsplash.com)
 * 本作品內的圖片和文字內容，僅個人作品練習，無任何商業用途
