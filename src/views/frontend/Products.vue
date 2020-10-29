@@ -22,9 +22,10 @@
         </div>
       </div>
     </div>
-    <div class="bg-light pt-3">
+    <div class="bg-dark pt-3">
       <div class="container mt-md-5">
-        <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
+        <ul class="nav nav-pills justify-content-center border-white"
+        id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
             <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
             role="tab" aria-controls="pills-home" aria-selected="true"
@@ -48,14 +49,14 @@
         </ul>
         <div class="row mt-3">
           <div class="col-md-4 my-3" v-for="item in newProducts" :key="item.id">
-            <div class="card box-shadow border-0 mb-4 position-relative position-relative h-100">
+            <div class="card box-shadow border-2 mb-2 position-relative position-relative h-100">
               <img :src="item.imageUrl[0]" class="card-img-top rounded-0 card-img-height" alt="...">
-              <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                <h4 class="mb-0 text-primary">{{ item.title }}</h4>
-                <p class="card-text text-muted mb-0">{{ item.options.summary }}</p>
+              <div class="card-body border-top bg-dark d-flex flex-column align-items-center">
+                <h4 class="mb-2 text-primary">{{ item.title }}</h4>
+                <p class="card-text text-white mb-0">{{ item.options.summary }}</p>
                 <div class="d-none d-md-block">
-                  <div class="mt-2 text-center d-lg-flex">
-                    <del class="text-muted mr-lg-3">
+                  <div class="mt-4 text-center d-lg-flex">
+                    <del class="text-white mr-lg-3">
                       <small>原價：{{ item.origin_price | money }}</small>
                     </del>
                     <p class="text-primary mb-0">售價：<strong>{{ item.price | money }}</strong>
@@ -64,7 +65,7 @@
                 </div>
                 <div class="d-md-none">
                   <div class="mt-2 text-center d-flex">
-                    <del class="text-muted mr-3">
+                    <del class="text-white mr-3">
                       <small>原價：{{ item.origin_price | money }}</small>
                     </del>
                     <p class="text-primary h5 mb-0">售價：<strong>{{ item.price | money }}</strong>
@@ -72,14 +73,14 @@
                   </div>
                 </div>
               </div>
-              <div class="card-footer d-none d-md-block">
+              <div class="card-footer bg-dark border-top d-none d-md-block">
                 <div class="d-flex">
                   <router-link :to="`/product/${item.id}`" role="button" class="btn
-                  btn-outline-dark btn-sm stretched-link">
+                  btn-outline-light btn-sm stretched-link">
                   查看更多
                   </router-link>
 
-                  <button type="button" class="btn btn-outline-secondary btn-sm ml-auto
+                  <button type="button" class="btn btn-secondary btn-sm ml-auto
                   d-flex align-items-center stretched-link" style="position: relative;"
                   @click.prevent="addToCart(item.id)"
                   :disabled="status.loadingItem === item.id">加入購物車
@@ -88,7 +89,7 @@
                   </button>
                 </div>
               </div>
-              <div class="card-footer d-md-none">
+              <div class="card-footer border-top d-md-none">
                 <div class="d-flex">
                   <router-link :to="`/product/${item.id}`" role="button" class="btn
                   btn-outline-secondary stretched-link">

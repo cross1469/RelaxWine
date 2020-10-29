@@ -1,12 +1,12 @@
 <template>
   <div>
     <Navbar></Navbar>
-    <router-view :token="token" v-if="checkSuccess"/>
+    <router-view v-if="checkSuccess"/>
   </div>
 </template>
 
 <script>
-import Navbar from '../components/backend/BackendNavbar.vue';
+import Navbar from '@/components/backend/BackendNavbar.vue';
 
 export default {
   components: {
@@ -25,10 +25,10 @@ export default {
     checkToken() {
       const url = `${process.env.VUE_APP_APIPATH}api/auth/check`;
       this.token = document.cookie.replace(/(?:(?:^|.*;\s*)relaxWineToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
-      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
       this.$http.post(url, {
         api_token: this.token,
       }).then((res) => {
+        this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
         this.checkSuccess = true;
         this.$bus.$emit('message:push',
           `${res.data.message}！`,

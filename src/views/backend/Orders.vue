@@ -54,7 +54,6 @@ export default {
   components: {
     Pagination,
   },
-  props: ['token'],
   created() {
     this.getOrders();
   },

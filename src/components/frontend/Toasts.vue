@@ -37,7 +37,6 @@
 <script>
 /* global $ */
 export default {
-  name: 'Toasts',
   data() {
     return {
       messages: [],

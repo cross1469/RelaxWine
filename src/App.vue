@@ -10,7 +10,6 @@
 import Toast from '@/components/frontend/Toasts.vue';
 
 export default {
-  name: 'App',
   components: {
     Toast,
   },

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-dark">
     <section class="jumbotron jumbotron-fluid bg-cover-top bg-img-height-m font-KaushanScript"
     style="background-image:url(https://images.unsplash.com/photo-1455750252915-5218bdcc0816?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1649&q=80);">
       <div class="container">
@@ -17,21 +17,22 @@
         </div>
       </div>
     </section>
-    <section class="container mb-5">
+    <section class="container pb-5">
       <div class="form-row justify-content-center">
         <div class="col-md-12">
           <div class="d-flex flex-column justify-content-center">
-            <p class="font-weight-bold text-dark text-center pt-3 px-3 d-none d-md-block
-            font-size-m-plus">
+            <p class="font-weight-bold text-secondary text-center pt-3 px-3 d-none d-md-block
+            font-size-l">
             美酒相伴的美好時光
             </p>
-            <p class="font-weight-bold text-dark text-center pt-3 px-3 d-md-none font-size-m">
+            <p class="font-weight-bold text-secondary text-center pt-3
+            px-3 d-md-none font-size-m-plus">
             美酒相伴的美好時光
             </p>
 
               <div class="form-row mt-2">
                 <div class="col-md">
-                  <p class="text-dark px-md-2">
+                  <p class="text-white px-md-2">
                     2020年8月，RelaxWine 開設第一間網路商店。
                     <br>
                     RelaxWine 的成立為消費者注入更多元化的色彩及從二十多個國家採購洋酒，提供給我們的消費者。

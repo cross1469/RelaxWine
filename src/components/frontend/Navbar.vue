@@ -111,7 +111,10 @@ export default {
         .then((res) => {
           this.carts = res.data.data;
         })
-        .catch(() => {
+        .catch((error) => {
+          this.$bus.$emit('message:push',
+            `取得資料失敗!${error.response.data.errors}`,
+            'danger');
         });
     },
     closeNavbar() {

@@ -1,20 +1,20 @@
 <template>
-  <div class="bg-light">
+  <div class="bg-dark">
     <div class="container">
       <loading :active.sync="isLoading"></loading>
       <div class="row justify-content-center pt-5">
-        <div class="col-md-7">
+        <div class="col-md-7 d-flex justify-content-center">
           <img :src="product.imageUrl[0]" class="img-fluid bg-img-height-m" alt="...">
         </div>
         <div class="col-md-5 d-flex flex-column justify-content-center">
           <p class="h2 mt-3 mt-md-0 text-primary">{{ product.title }}</p>
           <hr class="border-primary mt-0 w-100 hr-border-width">
-          <p>{{ product.content }}</p>
+          <p class="text-white">{{ product.content }}</p>
           <div class="d-flex">
             <p class="h4 text-primary mb-0 mr-3">
               售價：<strong>{{ product.price | money }}</strong>
             </p>
-            <del class="text-muted">
+            <del class="text-light">
               <small>原價：{{ product.origin_price | money }}</small>
             </del>
           </div>
@@ -27,7 +27,7 @@
                 </option>
               </select>
             </div>
-            <button type="button" class="btn btn-outline-secondary w-50
+            <button type="button" class="btn btn-secondary w-50
             d-flex justify-content-center
             align-items-center" @click="addToCart(product.id, product.num)">
               <i class="mr-2 spinner-grow spinner-grow-sm spinner-size-s"
@@ -41,11 +41,18 @@
         <div class="col-md-3">
           <h4 class="text-primary">商品資訊</h4>
         </div>
-        <div class="col-md-9">
+        <div class="text-white col-md-9">
           <p v-html="product.description"></p>
         </div>
       </div>
       <ProductNotice/>
+      <hr class="border-white mt-5 hr-border-width">
+      <div class="row mt-5">
+        <div class="col">
+        <h4 class="text-white mb-4">相關商品</h4>
+        <RelatedPorducts :product="product" @update="getProduct"/>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -53,6 +60,7 @@
 
 <script>
 import ProductNotice from '@/components/frontend/ProductNotice.vue';
+import RelatedPorducts from '@/components/frontend/RelatedProducts.vue';
 
 export default {
   data() {
@@ -70,6 +78,7 @@ export default {
   },
   components: {
     ProductNotice,
+    RelatedPorducts,
   },
   created() {
     this.getProduct();
@@ -84,6 +93,13 @@ export default {
           this.product = res.data.data;
           this.isLoading = false;
           this.$set(this.product, 'num', 1);
+        })
+        .catch((error) => {
+          this.status.loadingItem = '';
+          this.$bus.$emit('message:push',
+            `取得資料失敗!${error.response.data.errors}`,
+            'danger');
+          this.isLoading = false;
         });
     },
     addToCart(id, quantity = 1) {

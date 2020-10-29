@@ -198,7 +198,6 @@ export default {
   components: {
     Pagination,
   },
-  props: ['token'],
   created() {
     this.getProducts();
   },
@@ -208,8 +207,8 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/products?page=${page}`;
       this.$http.get(url).then((res) => {
         this.products = res.data.data;
-        this.isLoading = false;
         this.pagination = res.data.meta.pagination;
+        this.isLoading = false;
       });
     },
     openModal(isNew, product) {
@@ -238,8 +237,8 @@ export default {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/product/${id}`;
       this.$http.get(url).then((res) => {
-        this.isLoading = false;
         this.tempProduct = res.data.data;
+        this.isLoading = false;
         $('#productModal').modal('show');
         this.$bus.$emit('message:push',
           '產品資料已取得！',
@@ -291,8 +290,8 @@ export default {
         },
       })
         .then((res) => {
-          this.isLoading = false;
           this.status.fileUploading = false;
+          this.isLoading = false;
           if (res.status === 200) {
             vm.tempProduct.imageUrl.push(res.data.data.path);
           }
@@ -302,8 +301,8 @@ export default {
             'success');
         })
         .catch((error) => {
-          this.isLoading = false;
           this.status.fileUploading = false;
+          this.isLoading = false;
           this.$bus.$emit('message:push',
             `${error.response.data.errors.file}檔案請勿超過 2MB！`,
             'danger');

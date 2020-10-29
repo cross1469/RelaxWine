@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-dark">
     <loading :active.sync="isLoading"></loading>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0 bg-img-height-s"
     style="background-image:url(https://images.unsplash.com/photo-1510267222691-b90c3f0494d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);">
@@ -22,12 +22,12 @@
     </div>
     <div class="container" v-if="carts.length">
       <div class="row justify-content-center">
-        <div class="col bg-white py-5 page-content-height">
+        <div class="col py-5 page-content-height">
           <div class="d-flex justify-content-center">
-            <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
+            <h2 class="text-white mb-0 font-weight-bold">購物車</h2>
           </div>
-          <hr class="border-dark mb-0 hr-border-width">
-          <div class="d-md-none mt-4 box-shadow"
+          <hr class="border-white mb-0 hr-border-width">
+          <div class="d-md-none text-white mt-4 box-shadow"
           v-for="item in carts" :key="item.product.id + 1" >
             <div class="d-flex align-items-center p-3">
               <div class="mr-3">
@@ -87,9 +87,9 @@
               </p>
             </div>
           </div>
-          <div class="table-responsive d-none d-md-block">
+          <div class="table-responsive text-white d-none d-md-block">
             <table class="table table-striped mb-0">
-              <thead class="text-center">
+              <thead class="text-white text-center">
                 <td>產品圖片</td>
                 <td>產品名稱</td>
                 <td>數量</td>
@@ -101,7 +101,7 @@
                   <td class="text-center px-0 table-width-s">
                     <img :src="item.product.imageUrl[0]"
                   alt="" class="table-img-height-s-plus"></td>
-                  <td class="align-middle text-center table-width-s">
+                  <td class="align-middle text-white text-center table-width-s">
                     {{ item.product.title }}
                   </td>
                   <td class="align-middle text-center table-width-m-plus">
@@ -109,8 +109,7 @@
                       <div class="input-group-prepend">
                         <button class="btn btn-primary d-flex align-items-center"
                         type="button" :disabled="item.quantity === 1"
-                        @click="item.quantity --;
-                        updateQuantity( item.product.id, item.quantity)">
+                        @click=" updateQuantity( item.product.id, item.quantity - 1)">
                         <span v-if="status.loadingUpdateCart === item.product.id"
                         class="spinner-border spinner-border-sm spinner-size-s">
                         </span>
@@ -118,14 +117,14 @@
                         </button>
                       </div>
                       <input min="1" type="number" class="form-control text-center"
-                      v-model="item.quantity"
-                      @keyup="updateQuantity(item.product.id, item.quantity)"
-                      :disabled="item.quantity === 1">
+                      :value="item.quantity"
+                      @keyup.enter="updateQuantity(item.product.id, $event.target.value)"
+                      @change="updateQuantity(item.product.id, $event.target.value)"
+                      :disabled="item.quantity <= 1">
                       <div class="input-group-append">
                         <button class="btn btn-primary d-flex align-items-center"
                         type="button"
-                        @click="item.quantity ++;
-                        updateQuantity( item.product.id, item.quantity)"
+                        @click="updateQuantity( item.product.id, item.quantity + 1)"
                         :disabled="status.loadingUpdateCart === item.product.id">
                         <span v-if="status.loadingUpdateCart === item.product.id"
                         class="spinner-border spinner-border-sm spinner-size-s">
@@ -135,7 +134,7 @@
                       </div>
                     </div>
                   </td>
-                  <td class="align-middle text-center table-width-m-plus">
+                  <td class="align-middle text-white text-center table-width-m-plus">
                     {{ item.product.price * item.quantity | money }}</td>
                   <td class="align-middle text-center table-width-s">
                     <a @click.prevent="deleteCartItem(item.product.id)"
@@ -146,8 +145,9 @@
                 </tr>
               </tbody>
             </table>
+            <hr class="border-white mb-0 hr-border-width">
           </div>
-          <div class="container">
+          <div class="container text-white">
             <div class="d-flex justify-content-between
             justify-content-md-end mt-4"  v-if="cartTotal > 0">
               <p class="mb-0 h4 font-weight-bold table-width-xs">總金額</p>
@@ -156,7 +156,7 @@
           </div>
           <div class="row d-flex justify-content-between mt-4">
             <div class="col-md-2">
-              <router-link class="btn btn-outline-dark btn-block"
+              <router-link class="btn btn-outline-light btn-block"
               to="/products">
               繼續選購
               </router-link>
@@ -173,23 +173,23 @@
     </div>
     <div class="container page-content-height" v-else>
       <div class="row flex-column justify-content-center align-items-center">
-        <div class="col bg-white pt-5">
+        <div class="col pt-5">
           <div class="d-flex justify-content-center">
-            <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
+            <h2 class="text-white mb-0 font-weight-bold">購物車</h2>
           </div>
-          <hr class="border-dark mb-0 hr-border-width">
+          <hr class="border-white mb-0 hr-border-width">
           <div class="d-flex justify-content-center">
-            <p class="h3 text-dark mt-3">購物車無商品，快去逛逛！</p>
+            <p class="h3 text-white mt-3">購物車無商品，快去逛逛！</p>
           </div>
         </div>
         <div class="col-md-5">
           <img class="img-fluid mt-3"
-        src="https://images.unsplash.com/photo-1524250426644-e24b385c291a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1624&q=80" alt="">
+        src="https://images.unsplash.com/photo-1511795267602-0424436b99c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80" alt="">
         </div>
       </div>
-      <div class="row d-flex justify-content-center mt-3 mb-5">
+      <div class="row d-flex justify-content-center mt-3 pb-5">
         <div class="col-md-2">
-          <router-link class="btn btn-outline-dark btn-block"
+          <router-link class="btn btn-secondary btn-block"
           to="/products">
           繼續選購
           </router-link>
@@ -225,8 +225,11 @@ export default {
           this.updateToTalPrice();
           this.isLoading = false;
         })
-        .catch(() => {
+        .catch((error) => {
           this.status.loadingItem = '';
+          this.$bus.$emit('message:push',
+            `取得資料失敗!${error.response.data.errors}`,
+            'danger');
           this.isLoading = false;
         });
     },
@@ -237,27 +240,31 @@ export default {
       });
       this.cartTotal = total;
     },
-    updateQuantity(id, quantity = 1) {
-      this.status.loadingUpdateCart = id;
-      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
-      const cart = {
-        product: id,
-        quantity,
-      };
-      this.$http.patch(url, cart)
-        .then(() => {
-          this.status.loadingUpdateCart = '';
-          this.getCart();
-          this.$bus.$emit('message:push',
-            '商品數量更新成功!',
-            'success');
-        })
-        .catch(() => {
-          this.status.loadingUpdateCart = '';
-          this.$bus.$emit('message:push',
-            '商品數量更新失敗!',
-            'danger');
-        });
+    updateQuantity(id, num) {
+      if (num < 1) {
+        this.$bus.$emit('message:push', '數量不可低於1喔!', 'danger');
+      } else {
+        this.status.loadingUpdateCart = id;
+        const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
+        const cart = {
+          product: id,
+          quantity: num,
+        };
+        this.$http.patch(url, cart)
+          .then(() => {
+            this.status.loadingUpdateCart = '';
+            this.getCart();
+            this.$bus.$emit('message:push',
+              '商品數量更新成功!',
+              'success');
+          })
+          .catch(() => {
+            this.status.loadingUpdateCart = '';
+            this.$bus.$emit('message:push',
+              '商品數量更新失敗!',
+              'danger');
+          });
+      }
     },
     deleteCartItem(id) {
       this.isLoading = true;
