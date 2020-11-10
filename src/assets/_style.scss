@@ -170,8 +170,8 @@ img.dark-shadow{
 }
 
 .table-img-width{
-  width:250px;
-  height: 250px;
+  width:180px;
+  height: 180px;
   object-fit: cover;
 }
 
@@ -301,12 +301,12 @@ input[type=number] {
 }
 
 .navbar-dark .navbar-nav .nav-link.active{
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #FFB800;
 }
 
 .nav-link-s:hover{
   background-color: rgba(255, 255, 255, .65);
-  color:#630815 !important;
+  color:#FFB800 !important;
 }
 
 .navbar-dark .navbar-nav .nav-link-s.active{

@@ -5,7 +5,7 @@
     style="background-image:url(https://images.unsplash.com/photo-1510267222691-b90c3f0494d6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80);">
       <div class="container">
         <div class="row">
-          <div class="col-md-5 d-md-none d-md-block">
+          <div class="col-md-5 d-none d-md-block">
             <div class="d-flex flex-column align-items-start mt-minus-m">
               <h1 class="text-primary font-weight-bold pt-5 font-size-xl font-KaushanScript"
               >Cart</h1>

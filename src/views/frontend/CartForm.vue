@@ -175,7 +175,7 @@
                   <div class="w-100">
                     <div class="d-flex justify-content-between text-white font-weight-bold">
                       <p class="mb-0">{{ item.product.title }}</p>
-                      <p class="mb-0">X {{ item.quantity }}</p>
+                      <p class="mb-0">x {{ item.quantity }}</p>
                     </div>
                     <div class="d-flex justify-content-between">
                       <small class="mb-0 text-secondary">

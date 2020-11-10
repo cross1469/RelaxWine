@@ -24,10 +24,10 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <div class="d-none d-md-block ml-auto">
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item is-active">
-                  <router-link class="nav-link text-primary" to="/">首頁</router-link>
+                <li class="nav-item">
+                  <router-link class="nav-link text-primary" to="/" >首頁</router-link>
                 </li>
-                <li class="nav-item is-active">
+                <li class="nav-item">
                   <router-link class="nav-link ml-md-2 text-primary" to="/about">關於我們</router-link>
                 </li>
                 <li class="nav-item">

@@ -168,8 +168,8 @@
               <div class="form-group contactFormGroup">
                 <validation-provider rules="required" v-slot="{ errors, classes, passed }">
                   <label for="message" class="mb-2"><span class="text-danger">*</span>
-                  意見反應</label>
-                  <textarea class="form-control" id="message" name="意見反應" rows="10"
+                  留言</label>
+                  <textarea class="form-control" id="message" name="留言" rows="10"
                   v-model.trim="form.message" :class="classes" placeholder="若對酒類商品有疑問，請留言告訴我們">
                   </textarea>
                   <span v-if="errors[0]" class="invalid-feedback">{{ errors[0] }}</span>
