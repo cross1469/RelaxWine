@@ -1,5 +1,5 @@
 # RelaxWine
-![index](https://github.com/cross1469/Hexschool-JSPortfolio/blob/master/week8/cross1469.github.io_RelaxWine_.png)
+![index](https://github.com/cross1469/Hexschool-JSPortfolio/blob/master/week8/RelaxWine.png)
 
 ## Demo
 https://cross1469.github.io/RelaxWine/
@@ -32,7 +32,7 @@ https://cross1469.github.io/RelaxWine/
   * 首頁 - 關於我們簡介、產品導覽
   * 產品列表 - 切換分類、加入購物車
   * 產品詳細 - 選擇產品數量加入購物車
-  * 購物車結帳 - 確認購物車產品項目、填寫訂單
+  * 購物車結帳 - 確認購物車產品項目、優惠碼套用、填寫訂單
   * 下單 - 完成結帳
 * 後台
   * 管理者登入
